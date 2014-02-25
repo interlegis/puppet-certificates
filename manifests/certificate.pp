@@ -1,11 +1,11 @@
 #certificate.pp
 
-define certificate ( $ensure = present,
-                     $source = false,
-                     $content = '',
-                     $ca_certificate = false,
-                     $target = '/etc/ssl/certs'
-                     ) {
+define certificates::certificate ( $ensure = present,
+                                   $source = false,
+                                   $content = '',
+                                   $ca_certificate = false,
+                                   $target = '/etc/ssl/certs'
+                                 ) {
 
   if $ca_certificate {
     $target = '/usr/share/ca-certificates'

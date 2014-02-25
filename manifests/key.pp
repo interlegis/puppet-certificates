@@ -1,11 +1,11 @@
 #key.pp
 
-define key ( $ensure = present,
-             $source = false,
-             $content = '',
-	     $owner = 'root',
-             $target = '/etc/ssl/private'
-           ) {
+define certificates::key ( $ensure = present,
+                           $source = false,
+                           $content = '',
+	                   $owner = 'root',
+                           $target = '/etc/ssl/private'
+                         ) {
 
   if $source {
     file { "$target/$name.key":
