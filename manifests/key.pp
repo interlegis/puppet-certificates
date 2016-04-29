@@ -10,18 +10,19 @@ define certificates::key ( $ensure = present,
   if $source {
     file { "$target/$name.key":
       ensure => $ensure,
-      owner => $owner, 
-      group => root, 
-      mode => "440",
+      owner  => $owner, 
+      group  => root, 
+      mode   => "440",
+      links  => follow,
       source => $source,
     }
   } else {
     if $content != '' {
       file { "$target/$name.key":
-        ensure => $ensure,
-        owner => $owner, 
-        group => root, 
-        mode => "440",
+        ensure  => $ensure,
+        owner   => $owner, 
+        group   => root, 
+        mode    => "440",
         content => $content,
       }
     } else {

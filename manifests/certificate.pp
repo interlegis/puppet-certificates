@@ -14,14 +14,15 @@ define certificates::certificate ( $ensure = present,
   if $source {
     file { "$target/$name.crt":
       ensure => $ensure,
-      owner => root, group => root, mode => "644",
+      owner  => root, group => root, mode => "644",
+      links  => follow,
       source => $source,
     }
   } else {
     if $content != '' {
       file { "$target/$name.crt":
-        ensure => $ensure,
-        owner => root, group => root, mode => "644",
+        ensure  => $ensure,
+        owner   => root, group => root, mode => "644",
         content => $content,
       }
     } else {
